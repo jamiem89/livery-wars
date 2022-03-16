@@ -20,8 +20,9 @@ function Card(props) {
         <div className="card">
             <h2 className="card__title">{props.title}</h2>
             <button className="card__button card__button-upvote" onClick={handleVotes}>Upvote ({upvotes})</button>
-            <button className="card__button card__button-downvote" onClick={handleVotes}>Downvote ({downvotes})</button>
-            <span className="card__total">Total = {totalVotes}</span>
+        <button className="card__button card__button-downvote" onClick={handleVotes}>Downvote ({downvotes})</button>
+            <span className="card__total">Total = {Math.floor((upvotes / (upvotes + downvotes) * 100))}</span>
+            <span className="card__bar"><span className="card__bar-progress" style={{width: `${(upvotes / (upvotes + downvotes) * 100)}%`}}></span></span>
         </div>
     )
 }
